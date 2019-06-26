@@ -1,0 +1,83 @@
+#eventsContainer {
+  overflow: auto;
+  height: 700px;
+}
+
+#eventsContainer .event-card {
+  margin-top: 40px;
+  border: 1px solid #f0f0f0;
+  height: 300px;
+}
+
+#eventsContainer .event-card .date {
+  text-align: center;
+  background: #f0f0f0;
+  padding: 5px;
+  font-weight: bold;
+}
+
+#eventsContainer .event-card .container-events .event {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#eventsContainer .event-card .container-events .event div {
+  margin-left: 5px;
+}
+
+#eventsContainer .event-card .container-events .event .name {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+form .form-input {
+  width: 49%;
+}
+
+form .form-input input {
+  width: 100%;
+}
+
+form p {
+  margin-bottom: 4px;
+}
+
+form button {
+  margin-left: auto;
+  width: 180px;
+  background: tomato;
+  border: none;
+  color: white;
+  margin-top: 10px;
+  padding: 4px;
+}
+
+.select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.select select {
+  width: 300px !important;
+  margin-left: auto;
+}
+
+
+/*# sourceMappingURL=/main.1603664a.css.map */
