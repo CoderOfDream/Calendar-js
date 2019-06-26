@@ -19,6 +19,7 @@ filter_select_el.onchange = function () {
         }
     }
 };
+let counter = 0;
 
 form.onsubmit = e => {
     e.preventDefault();
@@ -34,10 +35,6 @@ form.onsubmit = e => {
     dates.forEach(el => {
         if (formDate.value == el.innerHTML) {
             const containerEvents = $(el).next()[0];
-            const event = document.createElement('div');
-            event.classList.add('event');
-            containerEvents.appendChild(event);
-
             const checkTime = $(containerEvents).find('.event');
 
             checkTime.each(el1 => {
@@ -50,13 +47,15 @@ form.onsubmit = e => {
                     throw alert('Time has been declarated');
                 }
             })
-
+            const event = document.createElement('div');
+            event.classList.add('event');
+            containerEvents.appendChild(event);
 
             createElementFunc(event, checkTime, containerEvents);
         }
     })
 
-    let counter = 0;
+
 
     const createElementCol = () => {
         const eventContainer = document.querySelector('#eventsContainer');
@@ -89,9 +88,8 @@ form.onsubmit = e => {
     }
 
     if (dates.length == 0) createElementCol();
-    
     dates.forEach(el => {
-        if (formDate.value !== el.innerHTML) {
+        if (formDate.value != el.innerHTML) {
             counter++;
         }
         if (dates.length == counter) {
@@ -101,6 +99,7 @@ form.onsubmit = e => {
 }
 
 const createElementFunc = (event, checkTime, containerEvents, colMd4, date) => {
+
     const name = document.createElement('div');
     name.innerHTML = document.querySelector('#formName').value;
     name.classList.add('name');
@@ -169,12 +168,21 @@ const createElementFunc = (event, checkTime, containerEvents, colMd4, date) => {
     const deleted = document.createElement('div');
     deleted.innerHTML = '<i class="fas fa-times">';
     deleted.style.cursor = 'pointer';
+
     deleted.onclick = () => {
+        
+        const datee = $(event).parent().prev()[0];
+        const colMd44 = $(datee).parent().parent()[0];
+        console.log(datee);
+        console.log(colMd44);
+
         event.remove();
+
         if ($(containerEvents).children().length == 0) {
-            $(`[value = "${date.innerHTML}"]`).remove();
-            colMd4.remove();
+            $(`[value = "${datee.innerHTML}"]`).remove();
+            colMd44.remove();
         }
+        
     }
     event.appendChild(deleted);
 }

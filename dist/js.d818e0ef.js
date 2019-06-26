@@ -143,6 +143,8 @@ filter_select_el.onchange = function () {
   }
 };
 
+var counter = 0;
+
 form.onsubmit = function (e) {
   e.preventDefault();
 
@@ -155,9 +157,6 @@ form.onsubmit = function (e) {
   dates.forEach(function (el) {
     if (formDate.value == el.innerHTML) {
       var containerEvents = $(el).next()[0];
-      var event = document.createElement('div');
-      event.classList.add('event');
-      containerEvents.appendChild(event);
       var checkTime = $(containerEvents).find('.event');
       checkTime.each(function (el1) {
         if ($(checkTime[el1]).find('.prevtime').html() == formStartTime.value) {
@@ -169,10 +168,12 @@ form.onsubmit = function (e) {
           throw alert('Time has been declarated');
         }
       });
+      var event = document.createElement('div');
+      event.classList.add('event');
+      containerEvents.appendChild(event);
       createElementFunc(event, checkTime, containerEvents);
     }
   });
-  var counter = 0;
 
   var createElementCol = function createElementCol() {
     var eventContainer = document.querySelector('#eventsContainer');
@@ -200,7 +201,7 @@ form.onsubmit = function (e) {
 
   if (dates.length == 0) createElementCol();
   dates.forEach(function (el) {
-    if (formDate.value !== el.innerHTML) {
+    if (formDate.value != el.innerHTML) {
       counter++;
     }
 
@@ -278,11 +279,15 @@ var createElementFunc = function createElementFunc(event, checkTime, containerEv
   deleted.style.cursor = 'pointer';
 
   deleted.onclick = function () {
+    var datee = $(event).parent().prev()[0];
+    var colMd44 = $(datee).parent().parent()[0];
+    console.log(datee);
+    console.log(colMd44);
     event.remove();
 
     if ($(containerEvents).children().length == 0) {
-      $("[value = \"".concat(date.innerHTML, "\"]")).remove();
-      colMd4.remove();
+      $("[value = \"".concat(datee.innerHTML, "\"]")).remove();
+      colMd44.remove();
     }
   };
 
@@ -316,7 +321,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11484" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12217" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
