@@ -143,8 +143,6 @@ filter_select_el.onchange = function () {
   }
 };
 
-var counter = 0;
-
 form.onsubmit = function (e) {
   e.preventDefault();
 
@@ -199,6 +197,7 @@ form.onsubmit = function (e) {
     createElementFunc(event, checkTime, containerEvents, colMd4, date);
   };
 
+  var counter = 0;
   if (dates.length == 0) createElementCol();
   dates.forEach(function (el) {
     if (formDate.value != el.innerHTML) {
@@ -321,7 +320,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12217" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "4100" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

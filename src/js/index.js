@@ -19,7 +19,7 @@ filter_select_el.onchange = function () {
         }
     }
 };
-let counter = 0;
+
 
 form.onsubmit = e => {
     e.preventDefault();
@@ -86,6 +86,8 @@ form.onsubmit = e => {
 
         createElementFunc(event, checkTime, containerEvents, colMd4, date);
     }
+    
+    let counter = 0;
 
     if (dates.length == 0) createElementCol();
     dates.forEach(el => {
